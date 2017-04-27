@@ -12,7 +12,9 @@ app.get('/metrics', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(metrics.metrics.getAll(req.query.reset));
 });
-
 const server = http.createServer(app);
 
-module.exports = { app, server };
+module.exports = {
+  app,
+  server,
+};
