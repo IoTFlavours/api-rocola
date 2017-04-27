@@ -1,0 +1,32 @@
+{
+  "name": "rocolazo",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-node-metrics": "^1.4.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2",
+    "spotify-web-api-node": "^2.3.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6",
+    "supertest": "^2.0.1"
+  }
+}
