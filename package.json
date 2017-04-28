@@ -1,5 +1,5 @@
 {
-  "name": "rocolazo",
+  "name": "api-rocola",
   "version": "0.0.1",
   "private": true,
   "main": "app.js",
@@ -23,8 +23,6 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
     "mocha": "^3.2.0",
     "sinon": "^1.17.6",
     "supertest": "^2.0.1"
