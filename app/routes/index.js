@@ -2,7 +2,7 @@
 
 const express = require('express');
 const SpotifyWebApi = require('spotify-web-api-node');
-// const spotify = require('../modules/spotify').spotifyApi;
+const request = require('request');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ const router = express.Router();
 const clientId = '79c1fdf6a43243378e995732c34deb22';
 const clientSecret = '80da3e5874bf4673913a1475301011d7';
 const redirectUri = 'http://localhost:8081/auth/spotify/callback';
-const scopes = ['user-read-private', 'user-read-email', 'playlist-modify-public', 'playlist-modify-private'];
+const scopes = ['user-read-private', 'user-read-email', 'playlist-modify-public', 'playlist-modify-private', 'user-read-currently-playing'];
 
 const spotify = new SpotifyWebApi({
   clientId,
@@ -79,11 +79,25 @@ router.get('/user/:uid/playlist/:pid/addtrack/:tid/position/:p', (req, res) => {
       console.log(err);
     });
 });
+
+// GET CURRENT PLAYNING SONG -- tested with postman
+// TODO with uid get in the database the access token to put in the headers
+router.get('/user/:uid/currentSong/:token', (req, res) => {
+  const { uid, token } = req.params;
+  console.log(uid);
+  const currentSongRequest = { url: 'https://api.spotify.com/v1/me/player/currently-playing', headers: { Authorization: `Bearer ${token}` } };
+  request(currentSongRequest, (error, response) => {
+    console.log('error:', error); // Print the error if one occurred
+    res.json(response);
+  });
+});
+
 // SPOTIFY AUTHENTIFICATION
 router.get('/auth/spotify', (req, res) => {
   console.log('hola');
   const authorizeURL = spotify.createAuthorizeURL(scopes);
-  res.redirect(authorizeURL);
+  console.log(authorizeURL);
+  res.send(authorizeURL);
 });
 
 // SPOTIFY CALLBACK
